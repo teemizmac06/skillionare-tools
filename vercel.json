@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "regions": ["iad1"],
+  "functions": {
+    "api/telegram/webhook.js":    { "maxDuration": 10,  "memory": 256  },
+    "api/analyze/index.js":       { "maxDuration": 300, "memory": 3008 },
+    "api/analyze/screenshots.js": { "maxDuration": 300, "memory": 3008 },
+    "api/health.js":              { "maxDuration": 10,  "memory": 128  }
+  },
+  "rewrites": [
+    { "source": "/api/telegram/webhook",    "destination": "/api/telegram/webhook.js"    },
+    { "source": "/api/analyze/screenshots", "destination": "/api/analyze/screenshots.js" },
+    { "source": "/api/analyze",             "destination": "/api/analyze/index.js"       },
+    { "source": "/api/health",              "destination": "/api/health.js"              },
+    { "source": "/twitch-audit-pro.html",   "destination": "/public/twitch-audit-pro.html" },
+    { "source": "/",                        "destination": "/public/index.html"          }
+  ]
+}
